@@ -947,16 +947,18 @@
                 }
             };
             
-            window.rotatePiece = function() {
-                if (currentPiece && gameRunning) {
-                    const newRotation = (currentPiece.rotation + 1) % currentPiece.rotations.length;
-                    if (isValidPosition(currentPiece, currentPiece.x, currentPiece.y, newRotation)) {
-                        currentPiece.rotation = newRotation;
-                        currentPiece.shape = currentPiece.rotations[newRotation];
-                        draw();
-                    }
-                }
-            };
+           window.rotatePiece = function() {
+    if (currentPiece && gameRunning) {
+        const newRotation = (currentPiece.rotation + 1) % currentPiece.rotations.length;
+        const newShape = currentPiece.rotations[newRotation];
+
+        if (isValidPosition(currentPiece, currentPiece.x, currentPiece.y, newRotation)) {
+            currentPiece.rotation = newRotation;
+            currentPiece.shape = newShape;
+            draw();
+        }
+    }
+};
             
             window.dropPiece = function() {
                 if (currentPiece && gameRunning) {
